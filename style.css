@@ -1,15 +1,3 @@
-.btn_colors{
-    height: 300px;
-    width: 300px;
-    opacity: 0.6;
-    margin: 10px;
-}
-body{
-    background-color: #6495ED;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 #color_amarelo{
     background-color: #8b5b00;
     border-top-left-radius: 100%;
@@ -25,6 +13,18 @@ body{
 #color_vermelho{
     background-color: #5a1422;
     border-bottom-right-radius: 100%;
+}
+.btn_colors{
+    height: 300px;
+    width: 300px;
+    opacity: 0.6;
+    margin: 10px;
+}
+body{
+    background-color: #6495ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #object{
     display: flex;
@@ -57,12 +57,6 @@ body{
     justify-content: center;
     font-size: 30px;
 }
-h2{
-    margin-left: 70px;
-}
-#jesuis h2{
-    margin-left: 10px;
-}
 #center_element:hover{
     cursor: pointer;
 }
@@ -77,15 +71,17 @@ h2{
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
     height: 400px;
-    width: 400px;
+    width: 70%;
     font-family: 'Gwendolyn', cursive;
     padding-top: 20px;
 }
 p{
     font-size: 30px;
     justify-content: center;
-    width: 70%;
+    width: 80%;
 }
 button{
     border: none;
@@ -96,4 +92,13 @@ button{
     width: 200px;
     height: 50px;
     margin-bottom: 10px;
+}
+@media (max-width:700px){
+    .btn_colors{
+        height: 150px;
+        width: 150px;
+    }
+    #object{
+        width: 350px;
+    }
 }
