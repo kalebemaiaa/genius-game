@@ -1,0 +1,37 @@
+.btn_colors{
+    height: 200px;
+    width: 200px;
+    opacity: 0.4;
+}
+#color_amarelo{
+    background-color: #FFA500;
+    border-top-left-radius: 100%;
+}
+#color_verde{
+    background-color: #32CD32;
+    border-bottom-left-radius: 100%;
+}
+#color_azul{
+    background-color: #0000FF;
+    border-top-right-radius: 100%;
+}
+#color_vermelho{
+    background-color: #DC143C;
+    border-bottom-right-radius: 100%;
+}
+#object{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D8BFD8;
+}
+#center_element{
+    background-color: #000;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+}
+.selected{
+    opacity: 1.0;
+}
