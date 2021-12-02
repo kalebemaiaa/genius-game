@@ -80,7 +80,6 @@ function ajustando_pontuação(){
 
 function criandoElemeneto_COlor(color){
     if(color==0){
-
         return btn_green
     }
     else if(color==1){

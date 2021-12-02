@@ -72,12 +72,15 @@ h2{
 
 #alert_manual{
     display: flex   ;
-    background-color: #0000FF;
+    background-color: #F08080;
+    border-radius: 10%;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
     height: 400px;
     width: 400px;
+    font-family: 'Gwendolyn', cursive;
+    padding-top: 20px;
 }
 p{
     font-size: 30px;
@@ -86,6 +89,10 @@ p{
 }
 button{
     border: none;
+    background-color: #483D8B;
+    color: #F8F8FF;
+    font-size: 20px;
+    box-shadow:2px 2px #FFE4E1;
     width: 200px;
     height: 50px;
     margin-bottom: 10px;
