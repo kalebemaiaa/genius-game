@@ -1,6 +1,8 @@
 let ordem_para_apertar = []
 let ordem_apertada = []
 let pontuacao = 0
+        
+let tentativas = 0
 
 const btn_blue = document.querySelector('#color_azul') 
 const btn_yellow = document.querySelector('#color_amarelo') 
@@ -17,6 +19,7 @@ function gerar_ordem(){
         let elementColor = criandoElemeneto_COlor(ordem_para_apertar[i])
         highlight_COLOR(elementColor, Number(i)+1)
     }
+
 }
 
 function highlight_COLOR(element,numero){
@@ -32,34 +35,52 @@ function highlight_COLOR(element,numero){
 function checando_a_ordem(){
     for(let i in ordem_apertada){
         if(ordem_apertada[i]!= ordem_para_apertar[i]){
+            controle_btn = false
             game_over()
-            break
+            return
         }
     }
-    if(ordem_para_apertar.length==ordem_apertada.length){
-        
-        const paragrafo = document.createElement('p')
-        paragrafo.textContent = pontuacao
-        document.querySelector('#jesuis').appendChild(paragrafo)
+    if(ordem_para_apertar.length==ordem_apertada.length){       
+        ajustando_pontuação()
         next_level()
     }
 }
 
 function clickaaa(color){
-    console.log(`CLICKEI NO ${color}`)
-    ordem_apertada[ordem_apertada.length] = color
-    criandoElemeneto_COlor(color).classList.add('selected')
-    let audio = new Audio('./audio1.mp3');
-    //audio.play();
-    setTimeout(()=>{
-        criandoElemeneto_COlor(color).classList.remove('selected');
-        checando_a_ordem();
-    },250)
+    if(controle_btn == false){
+        return
+    }
+    else{
+        ordem_apertada[ordem_apertada.length] = color
+        criandoElemeneto_COlor(color).classList.add('selected')
+        setTimeout(()=>{
+            criandoElemeneto_COlor(color).classList.remove('selected');
+            checando_a_ordem();
+        },250)
+    }
+}
+
+function indo_para_o_game(){
+    const elementos_ocultos = document.querySelectorAll('.start_none')
+    for(i=0;i<elementos_ocultos.length;i++){
+        elementos_ocultos[i].style.display = 'flex'
+        document.querySelector('#alert_manual').style.display = 'none'
+    }
 }
 
 
+function ajustando_pontuação(){
+    const paragrafo = document.createElement('h2')
+        paragrafo.textContent = `${pontuacao}`;
+        while(document.querySelector('#jesuis').lastChild){
+            document.querySelector('#jesuis').removeChild(document.querySelector('#jesuis').lastChild);
+        }
+        document.querySelector('#jesuis').appendChild(paragrafo)
+}
+
 function criandoElemeneto_COlor(color){
     if(color==0){
+
         return btn_green
     }
     else if(color==1){
@@ -75,23 +96,19 @@ function criandoElemeneto_COlor(color){
 
 function next_level(){
     pontuacao = pontuacao+10
-    
     gerar_ordem()
 }
 function game_over(){
     alert('GAME OVER')
     pontuacao = 0
+    tentativas++
     ordem_para_apertar = []
     ordem_apertada = []
-
-    
-    controle_btn = false
+    ajustando_pontuação()
 }
 
 function play_game(){
-    alert('SEJA BEM VINDO\nBOM GAME!')
     pontuacao = 0
-
     next_level()
 }
 
@@ -103,15 +120,7 @@ function off_on_button(){
         controle_btn = true
     }
     else{
-    }
-    controlando_cor_btn()
-}
-
-function controlando_cor_btn(){
-    if(controle_btn == false){
-        document.querySelector('#center_element').style.backgroundColor = "#fff"
-    }
-    else{
-
+        game_over()
+        controle_btn = false
     }
 }

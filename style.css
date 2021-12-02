@@ -1,37 +1,92 @@
 .btn_colors{
-    height: 200px;
-    width: 200px;
-    opacity: 0.4;
+    height: 300px;
+    width: 300px;
+    opacity: 0.6;
+    margin: 10px;
+}
+body{
+    background-color: #6495ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #color_amarelo{
-    background-color: #FFA500;
+    background-color: #8b5b00;
     border-top-left-radius: 100%;
 }
 #color_verde{
-    background-color: #32CD32;
-    border-bottom-left-radius: 100%;
-}
-#color_azul{
-    background-color: #0000FF;
+    background-color: #0a500a;
     border-top-right-radius: 100%;
 }
+#color_azul{
+    background-color: #191974;
+    border-bottom-left-radius: 100%;
+}
 #color_vermelho{
-    background-color: #DC143C;
+    background-color: #5a1422;
     border-bottom-right-radius: 100%;
 }
 #object{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #D8BFD8;
+    background-color: #000;
+    flex-direction: column;
+    width: 650px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
 }
 #center_element{
     background-color: #000;
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border-radius: 100%;
     position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 3px 3px #7B68EE,3px 3px #7B68EE,3px 3px #7B68EE;
 }
 .selected{
     opacity: 1.0;
+}
+#container_pontuação{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+h2{
+    margin-left: 70px;
+}
+#jesuis h2{
+    margin-left: 10px;
+}
+#center_element:hover{
+    cursor: pointer;
+}
+.start_none{
+    display: none;
+}
+
+#alert_manual{
+    display: flex   ;
+    background-color: #0000FF;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+}
+p{
+    font-size: 30px;
+    justify-content: center;
+    width: 70%;
+}
+button{
+    border: none;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 10px;
 }
