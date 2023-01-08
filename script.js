@@ -1,8 +1,11 @@
 const container = document.querySelector('#container');
 const start_btn = document.querySelector('#btn_play');
+const pontuacao_view = document.querySelector('#pontuacao_view');
 let game = false;
+let btnColors = false;
 let ordem = []
 let count_click = 0
+let pontuacao = 0
 
 const botoes = {
     'red': {
@@ -31,12 +34,24 @@ const add_color = () => {
 }
 
 const highlight_color = (cor) => {
-    setTimeout( () => {
-        document.querySelector(`#${cor}`).classList.add('highlight');
-    }, 200)
-    setTimeout( () => {
-        document.querySelector(`#${cor}`).classList.remove('highlight');
-    }, 600)
+    const corEscolhida = document.querySelector(`#${cor}`)
+    const audio = new Audio(`./Buttons/${cor}.wav`)
+    corEscolhida.classList.add('highlight');
+
+    setTimeout(() => {
+        corEscolhida.classList.remove('highlight');
+        audio.play()
+    }, 300)
+}
+
+const highlightOrdem = () => {
+    btnColors = false;
+    for(let i = 0; i < ordem.length; i++) {
+        setTimeout( () => {
+            if(ordem[i] === undefined) return;
+            highlight_color(ordem[i])
+        }, (i + 1) * 700)
+    }
 }
 
 window.onload = () => {
@@ -49,33 +64,48 @@ window.onload = () => {
         container.appendChild(div_color);
 
         div_color.onclick = () => {
-            if(!game) return;
-            highlight_color(div_color.id)
+            if(!game || !btnColors) return;
+            highlight_color(color);
+
             if(div_color.id !== ordem[count_click]){
                 ordem = []
-                alert("PERDEU")
                 game = false
+                btnColors = false
                 count_click = 0
-                return
+                pontuacao = 0
+                pontuacao_view.textContent = `Pontuação: ${pontuacao}`;
+                return 
             }
 
-            count_click += 1
+            count_click++;
+
             if(count_click === ordem.length){
+                console.log('acertou tudo')
                 add_color()
+                pontuacao += 100
+                pontuacao_view.textContent = `Pontuação: ${pontuacao}`;
                 count_click = 0
-                for(const color of ordem){
-                    highlight_color(color)
-                }
+                highlightOrdem()
+                btnColors = true
             }
         }
     }
 }
 
 start_btn.onclick = () => {
-    if(game) return
+    if(game) {
+        ordem = []
+        game = false
+        btnColors = false
+        count_click = 0
+        pontuacao = 0
+        pontuacao_view.textContent = `Pontuação: ${pontuacao}`;
+        return
+    }
     add_color();
     for(const color of ordem){
         highlight_color(color)
     }
     game = true;
+    btnColors = true
 }
